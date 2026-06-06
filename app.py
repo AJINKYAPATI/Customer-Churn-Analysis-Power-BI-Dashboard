@@ -778,9 +778,9 @@ def page_explorer(df: pd.DataFrame, dark_mode: bool) -> None:
                  "InternetService", "MonthlyCharges", "TotalCharges", "Churn"],
     )
     st.dataframe(
-    df[cols_to_show],
-    use_container_width=True
-)
+        df[cols_to_show].style.applymap(
+            lambda v: f"color: {RED}; font-weight: bold" if v == "Yes" else "",
+            subset=[c for c in ["Churn"] if c in cols_to_show],
         ),
         use_container_width=True,
         height=400,
