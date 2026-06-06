@@ -378,8 +378,14 @@ def page_churn(df: pd.DataFrame, dark_mode: bool) -> None:
                 plot_bgcolor="#1E293B" if dark_mode else "white",
                 font=dict(color="#F1F5F9" if dark_mode else TEXT_DARK, size=10),
             )
-            st.plotly_chart(fig2, use_container_width=True, config={"displayModeBar": False})
+    import plotly.express as px
 
+        fig = px.bar(
+        x=["A","B","C"],
+        y=[10,20,30]
+        )
+
+    st.plotly_chart(fig, use_container_width=True)
         st.markdown('</div>', unsafe_allow_html=True)
 
     with right:
